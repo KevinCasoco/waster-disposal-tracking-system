@@ -71,7 +71,7 @@ class SmsController extends Controller
         // Iterate through each user
         foreach ($users as $user) {
             // Construct SMS message including user's name and schedule information
-            $message = 'Hello, ' . $user->name . "! Waste Collection Schedules will be on:\n" . $smsContent;
+            $message = 'Hello this is WDTS team' . "! Waste Collection Schedules will be on:\n" . $smsContent;
 
             // Send SMS to the user
             $this->sendSMS([$user->number], $message, 'YourName');
@@ -339,7 +339,7 @@ class SmsController extends Controller
          // Iterate through each user
          foreach ($users as $user) {
              // Construct SMS message including user's name and schedule information
-             $message = 'Hello, ' . $user->name . "! Waste Collection Schedules will be on:\n" . $smsContent;
+             $message = 'Hello this is WDTS team' . "! Waste Collection Schedules will be on:\n" . $smsContent;
 
              // Send SMS to the user
              $this->sendSMS([$user->number], $message, 'YourName');

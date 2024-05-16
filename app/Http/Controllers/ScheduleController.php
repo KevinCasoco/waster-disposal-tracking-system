@@ -290,6 +290,7 @@ class ScheduleController extends Controller
         return view('schedule-list-restore', compact('deletedRecords', 'locations', 'data'));
     }
 
+    // restore waste collection info
     public function collector_schedule_restore(Request $request)
     {
         // Retrieve soft deleted records

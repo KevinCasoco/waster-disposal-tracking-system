@@ -55,7 +55,7 @@ class WasteCollectionSchedule extends Notification
         }
 
         $mailMessage = (new MailMessage)
-            ->line('The time of collection will be on:');
+            ->line('The scheduled waste collection will be on:');
 
         // Use the line method for each schedule
         foreach ($userLocationSchedules as $schedule) {

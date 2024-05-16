@@ -35,8 +35,8 @@ class TrashBinNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The weight of trash bin has exceeded 1 kg.')
-            ->action('View Sensor Data', url('/sensor_data'))
+            ->line('The weight of trash bin has exceeded 10 kg.')
+            // ->action('View Sensor Data', url('/sensor_data'))
             ->line('Thank you for using our application!');
     }
 

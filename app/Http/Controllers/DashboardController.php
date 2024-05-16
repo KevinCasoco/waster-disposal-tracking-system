@@ -191,12 +191,14 @@ class DashboardController extends Controller
     //     return response()->json(['trash_weight' => $trash_weight]);
     // }
 
+    // setting up the max kg for truck weight!
     public function getTruckWeightStatus()
     {
         $truck_weight = (float)Truck::orderBy('id', 'desc')->value('truck_weight');
         $status_truck = '';
 
-        if ($truck_weight == 0.0000) {
+        // maximum 10 kg
+        if ($truck_weight == 10.0000) {
             $status_truck = '0%';
         } elseif ($truck_weight >= 1.0000) {
             $status_truck = '100% Full';
@@ -209,7 +211,7 @@ class DashboardController extends Controller
         } elseif ($truck_weight >= 0.6000) {
             $status_truck = '60% ';
         } elseif ($truck_weight >= 0.5000) {
-            $status_truck = '50% ';
+            $status_truck = '50% half';
         } elseif ($truck_weight >= 0.4000) {
             $status_truck = '40% ';
         } elseif ($truck_weight >= 0.3000) {
@@ -219,12 +221,13 @@ class DashboardController extends Controller
         } elseif ($truck_weight >= 0.1000) {
             $status_truck = '10% ';
         } else {
-            $status_truck = '0% ';
+            $status_truck = '0% empty ';
         }
 
         return response()->json(['truck_weight' => $truck_weight, 'status_truck' => $status_truck]);
     }
 
+    // setting up the max kg for trash bin!
     public function getTrashWeightStatus()
     {
         $trash_weight = (float) TrashCan::orderBy('id', 'desc')->value('trash_weight');
@@ -232,7 +235,7 @@ class DashboardController extends Controller
 
         if ($trash_weight == 0.0000) {
             $status = '0%';
-        } elseif ($trash_weight >= 1.0000) {
+        } elseif ($trash_weight >= 10.0000) {
             $status = '100% Full';
         } elseif ($trash_weight >= 0.9000) {
             $status = '90%';
@@ -243,7 +246,7 @@ class DashboardController extends Controller
         } elseif ($trash_weight >= 0.6000) {
             $status = '60%';
         } elseif ($trash_weight >= 0.5000) {
-            $status = '50%';
+            $status = '50% half';
         } elseif ($trash_weight >= 0.4000) {
             $status = '40%';
         } elseif ($trash_weight >= 0.3000) {
@@ -253,13 +256,14 @@ class DashboardController extends Controller
         } elseif ($trash_weight >= 0.1000) {
             $status = '10%';
         } else {
-            $status = '0%';
+            $status = '0% empty';
         }
 
         return response()->json(['trash_weight' => $trash_weight, 'status' => $status]);
     }
 
     // automatic send the email when the max kilogram exceed
+    // admin account can only receive the email notif
     public function getTruckWeight()
     {
         $formattedWeight = Truck::orderBy('id', 'desc')->value('truck_weight');
@@ -282,6 +286,7 @@ class DashboardController extends Controller
     }
 
     // automatic send the email when the max kilogram exceed
+    // admin account can only receive the email notif
     public function getTrashWeight()
     {
         // Retrieve the last recorded weight from the SensorData model

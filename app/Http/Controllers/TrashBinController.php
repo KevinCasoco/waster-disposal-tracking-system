@@ -13,6 +13,7 @@ class TrashBinController extends Controller
         return view('admin-trash-bin', compact('trashBins'));
     }
 
+    // dynamically add the trash bin location for admin account
     public function create(Request $request)
     {
         // Validate request

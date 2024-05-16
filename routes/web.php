@@ -280,7 +280,7 @@ Route::middleware('auth', 'checkActiveStatus')->group(function () {
     // send sms
     Route::post('/sms-controller', [SmsController::class, 'sms_controller'])->name('collector-schedule.sms_controller');
 
-    // soft delete
+    // soft delete data
     Route::get('/collector-schedule-list-restore', [ScheduleController::class, 'collector_schedule_restore'])->name('collector-schedule-list-restore.collector_schedule_restore');
     Route::patch('/collector-schedules-list/{id}/restore', [ScheduleController::class, 'collector_restore'])->name('collector-schedule-list-restore.collector_restore');
 
@@ -303,13 +303,6 @@ Route::middleware('auth', 'checkActiveStatus', 'verified')->group(function () {
     // Route::get('/recyclable-waste', [UserController::class, 'showRecyclableWaste'])->name('recyclable-waste');
 
     // Route::get('/hazardous-waste', [UserController::class, 'showHazardousWaste'])->name('hazardous-waste');
-
-    // // edit residents/users
-    // Route::patch('/residents-user/update/{id}', [UserController::class, 'update_user_residents'])->name('user-residents.update_user_residents');
-
-    // // delete
-    // Route::get('/user-residents', [UserController::class, 'residents'])->name('user-residents');
-    // Route::delete('/residents/{id}', [UserController::class, 'destroy_user_residents'])->name('user-residents.destroy_user_residents');
 
 }); // end of middleware group
 
