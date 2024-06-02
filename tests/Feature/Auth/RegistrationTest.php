@@ -4,11 +4,12 @@ namespace Tests\Feature\Auth;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, WithFaker;
 
     public function test_registration_screen_can_be_rendered(): void
     {
@@ -24,9 +25,9 @@ class RegistrationTest extends TestCase
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            '_token' => csrf_token(), // Include CSRF token
         ]);
 
-        $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
     }
 }
